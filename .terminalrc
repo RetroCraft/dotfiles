@@ -1,0 +1,20 @@
+export PATH="$PATH:/usr/games"
+
+# Aliases
+alias vi='nvim'
+alias vim='nvim'
+
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+lolcow() {
+  echo "$1" | cowsay | lolcat
+}
+
+# Color scheme
+. ~/.config/base16-shell/scripts/base16-tomorrow-night.sh
+
+if ! [ $(id -u) = 0 ]; then
+  fortune -e fortunes | cowsay | lolcat
+fi
+
+# vim: ft=sh
