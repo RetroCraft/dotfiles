@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jam/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 export ZSH_DISABLE_COMPFIX=true
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -97,11 +97,6 @@ source $ZSH/oh-my-zsh.sh
 source ~/.terminalrc
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# added by travis gem
-[ -f /root/.travis/travis.sh ] && source /root/.travis/travis.sh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 
 export DISPLAY=:0

@@ -1,0 +1,12 @@
+[push]
+	default = simple
+[credential]
+	helper = store
+[user]
+	email = retrocraft314@gmail.com
+	name = James Ah Yong
+	signingkey = 5AE9E583
+[core]
+	autocrlf = false
+[github]
+	user = RetroCraft
