@@ -8,7 +8,6 @@ alias ..='cd ..'
 alias ...='cd ../../../'
 alias ....='cd ../../../../'
 alias .....='cd ../../../../'
-alias ~='cd ~'
 
 # Apt
 alias agi='sudo apt-get install'
@@ -16,21 +15,19 @@ alias agrm='sudo apt-get remove'
 alias agu='sudo apt-get update; sudo apt-get upgrade'
 alias agc='sudo apt-get autoremove; sudo apt-get autoclean; sudo apt-get clean'
 
-alias pip='sudo -H pip'
-
 # VIM mode
-alias :e='emacsclient -t'
+alias :e='nvim'
 alias :q='exit'
 alias :wq='exit'
+alias vi='nvim'
+alias vim='nvim'
 
 # Misc
 alias !!='sudo !!'
 alias mkdir="mkdir -pv"
 alias reboot='sudo /sbin/reboot'
 alias wget='wget -c'
-alias vi='vim'
 alias chrome='google-chrome'
-alias refresh='source /home/james/.bashrc'
 alias df='df -h'
 alias du='du -h'
 
@@ -41,6 +38,9 @@ alias stfu='shutup'
 #######################
 # Tools and Long Things
 #######################
+
+## Dotfiles git repository
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ## Disable volume
 alias shutup='amixer -q -D pulse set Master toggle'

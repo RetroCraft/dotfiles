@@ -1,14 +1,9 @@
 export PATH="$PATH:/usr/games"
 
 # Aliases
-alias vi='nvim'
-alias vim='nvim'
-
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-lolcow() {
-  echo "$1" | cowsay | lolcat
-}
+if [ -f $HOME/.bash_aliases ]; then
+  source $HOME/.bash_aliases
+fi
 
 # Color scheme
 . ~/.config/base16-shell/scripts/base16-tomorrow-night.sh
