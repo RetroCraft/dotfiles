@@ -5,9 +5,7 @@ if [ -f $HOME/.bash_aliases ]; then
   source $HOME/.bash_aliases
 fi
 
-# Color scheme
-. ~/.config/base16-shell/scripts/base16-tomorrow-night.sh
-
+# MOTD
 if ! [ $(id -u) = 0 ]; then
   fortune -e fortunes | cowsay | lolcat
 fi
