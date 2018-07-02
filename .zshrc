@@ -6,7 +6,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 
 export EDITOR='nvim'
-source ~/.terminalrc
+[ -f ~/.terminalrc ] && source ~/.terminalrc
 
 export DISPLAY=:0
 
@@ -20,8 +20,24 @@ antigen use oh-my-zsh
 antigen bundle history
 
 # Set Spaceship ZSH as a prompt
-SPACESHIP_EXIT_CODE_SHOW=true
+SPACESHIP_PROMPT_ORDER=(
+	user dir host
+	git hg
+	package node ruby
+	elixir xcode swift golang
+	php rust haskell julia
+	docker aws venv conda pyenv
+	dotnet ember kubecontext
+	exec_time line_sep
+	battery jobs exit_code char
+)
+SPACESHIP_RPROMPT_ORDER=(
+	vi_mode
+	time
+)
+SPACESHIP_VI_MODE_COLOR=black
 SPACESHIP_TIME_SHOW=true
+SPACESHIP_TIME_PREFIX=''
 antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 
 # Syntax highlighting
