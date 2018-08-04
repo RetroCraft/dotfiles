@@ -47,6 +47,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 antigen bundle npm
 antigen bundle yarn
+antigen bundle zsh-users/zsh-completions
+autoload -U compinit && compinit
 
 # Command autosuggestions
 antigen bundle zsh-users/zsh-autosuggestions
