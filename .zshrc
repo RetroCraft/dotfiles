@@ -3,6 +3,7 @@ unsetopt BG_NICE
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
 export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 
 export EDITOR='nvim'
@@ -13,6 +14,7 @@ export DISPLAY=:0
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Antigen
+rm $HOME/.zcompdump
 source $HOME/.antigen/antigen.zsh
 antigen use oh-my-zsh
 
