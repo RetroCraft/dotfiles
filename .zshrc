@@ -1,5 +1,6 @@
 # Weird bug (Microsoft/WSL#1887)
 unsetopt BG_NICE
+[ -f ~/.profile ] && source ~/.profile
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
