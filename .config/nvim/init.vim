@@ -714,6 +714,17 @@ call plug#begin('~/.config/nvim/plugged')
     let g:vimtex_view_general_viewer='sumatrapdf'
   " }}}
 
+  " jelly {{{
+    " digraphs
+    Plug 'https://gist.github.com/06eef9baa35c3313d110e5d2afaa3844.git',
+          \ { 'as': 'xxx', 'do': 'mkdir -p plugin; cp -f *.vim plugin/' }
+  " }}}
+
+  " mathematica {{{
+    Plug 'rsmenon/vim-mathematica'
+    let g:mma_candy=1
+  " }}}
+
   Plug 'fatih/vim-go', { 'for': 'go' }
   Plug 'timcharper/textile.vim', { 'for': 'textile' }
   Plug 'lambdatoast/elm.vim', { 'for': 'elm' }
