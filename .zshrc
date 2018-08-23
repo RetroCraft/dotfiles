@@ -69,3 +69,6 @@ bindkey '^[OA' up-line-or-beginning-search
 bindkey '^[OB' down-line-or-beginning-search
 bindkey -M vicmd 'k' up-line-or-beginning-search
 bindkey -M vicmd 'j' down-line-or-beginning-search
+# Dumb defaults
+bindkey '^[[3~' delete-char
+bindkey -a '^[[3~' delete-char

@@ -96,7 +96,6 @@ call plug#begin('~/.config/nvim/plugged')
   set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
   set showbreak=↪
 
-  set t_Co=256 " Explicitly tell vim that the terminal supports 256 colors
   " switch cursor to line when in insert mode, and block when not
   set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
   \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
@@ -109,6 +108,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   " enable 24 bit color support if supported
   if (has("termguicolors"))
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8f=[48;2;%lu;%lu;%lum
     set termguicolors
   endif
 
@@ -740,7 +741,7 @@ call plug#end()
     let base16colorspace=256
     source ~/.vimrc_background
   else
-    let g:onedark_termcolors=16
+    let g:onedark_termcolors=256
     let g:onedark_terminal_italics=1
     colorscheme onedark
   endif

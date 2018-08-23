@@ -43,7 +43,7 @@ alias stfu='shutup'
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ## Disable volume
-alias shutup='amixer -q -D pulse set Master toggle'
+alias shutup='pactl -- set-sink-mute 0 toggle'
 
 ## Alert boxes
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
