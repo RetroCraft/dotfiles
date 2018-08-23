@@ -10,8 +10,13 @@ reload_dunst() {
   killall dunst -q
 }
 
+reload_discord() {
+  wal-discord
+}
+
 main() {
   reload_dunst
+  reload_discord
 }
 
 main
