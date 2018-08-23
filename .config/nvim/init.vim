@@ -106,24 +106,12 @@ call plug#begin('~/.config/nvim/plugged')
     set t_ut=
   endif
 
-  " enable 24 bit color support if supported
-  if (has("termguicolors"))
-    set t_8f=[38;2;%lu;%lu;%lum
-    set t_8f=[48;2;%lu;%lu;%lum
-    set termguicolors
-  endif
-
   " highlight conflicts
   match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
-
-  " Load colorschemes
-  Plug 'chriskempson/base16-vim'
-  Plug 'joshdick/onedark.vim'
 
   " LightLine {{{
     Plug 'itchyny/lightline.vim'
     Plug 'nicknisi/vim-base16-lightline'
-    " Plug 'felixjung/vim-base16-lightline'
     let g:lightline = {
     \  'colorscheme': 'base16',
     \  'active': {
@@ -229,6 +217,15 @@ call plug#begin('~/.config/nvim/plugged')
       autocmd User ALELint call LightlineUpdate()
     augroup end
   " }}}
+ 
+  " Load colorschemes
+  Plug 'chriskempson/base16-vim'
+  Plug 'joshdick/onedark.vim'
+  if filereadable(expand("~/.cache/wal/colors"))
+    Plug 'dylanaraps/wal.vim'
+    let g:lightline['colorscheme'] = 'wal'
+  endif
+
 " }}}
 
 " General Mappings {{{
@@ -737,10 +734,16 @@ call plug#end()
 " Colorscheme and final setup {{{
   " This call must happen after the plug#end() call to ensure
   " that the colorschemes have been loaded
-  if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
+  if filereadable(expand("~/.cache/wal/colors"))
+    colorscheme wal
   else
+    " enable 24 bit color support if supported
+    if (has("termguicolors"))
+      set t_8f=[38;2;%lu;%lu;%lum
+      set t_8f=[48;2;%lu;%lu;%lum
+      set termguicolors
+    endif
+
     let g:onedark_termcolors=256
     let g:onedark_terminal_italics=1
     colorscheme onedark

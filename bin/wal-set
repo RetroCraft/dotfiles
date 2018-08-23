@@ -1,0 +1,4 @@
+#!/bin/bash
+
+wal -i $HOME/Pictures/Wallpapers/earthporn -o wal-post
+

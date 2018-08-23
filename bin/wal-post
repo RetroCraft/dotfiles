@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+source "$HOME/.cache/wal/colors.sh"
+
+reload_dunst() {
+  sed -i"" --follow-symlinks \
+    -e "s/background = \"#.*\"/background = \"${background:-#282C34}\"/" \
+    -e "s/foreground = \"#.*\"/foreground = \"${foreground:-#AAB2BF}\"/" \
+    $HOME/.config/dunst/dunstrc
+  killall dunst -q
+}
+
+main() {
+  reload_dunst
+}
+
+main
+

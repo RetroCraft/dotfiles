@@ -7,6 +7,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
 export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 
+[ -f ~/.cache/wal/sequences ] && cat ~/.cache/wal/sequences
+
 export EDITOR='nvim'
 [ -f ~/.terminalrc ] && source ~/.terminalrc
 
@@ -72,3 +74,4 @@ bindkey -M vicmd 'j' down-line-or-beginning-search
 # Dumb defaults
 bindkey '^[[3~' delete-char
 bindkey -a '^[[3~' delete-char
+
