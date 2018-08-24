@@ -26,10 +26,10 @@ secondary = ${xrdb:color1}
 alert = #bd2c40
 
 [bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP1}
 width = 100%
 height = 30
-offset-y = 1%
+; offset-y = 1%
 fixed-center = true
 
 background = ${colors.background}
@@ -41,7 +41,7 @@ line-color = #f00
 border-size = 0
 border-left-size = 50
 border-right-size = 50
-border-top-size = 20
+border-top-size = 10
 border-color = #00000000
 
 padding = 1
@@ -52,7 +52,7 @@ font-0 = FuraMono Nerd Font:pixelsize=12;1
 
 modules-left = i3
 modules-center = date
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu wlan battery temperature powermenu
+modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu temperature wlan battery powermenu
 
 tray-transparent = true
 tray-background = #0063ff
@@ -60,7 +60,7 @@ tray-background = #0063ff
 ;wm-restack = bspwm
 ;wm-restack = i3
 
-; override-redirect = true
+override-redirect = true
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
@@ -182,7 +182,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = ""
+format-prefix = " "
 format-prefix-foreground = ${colors.primary}
 label = %percentage:2%%
 
@@ -262,6 +262,8 @@ full-at = 98
 
 format-charging = <ramp-capacity> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
+time-format = %H:%M
+label-discharging = %percentage%% %time%
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.primary}
@@ -281,12 +283,13 @@ ramp-capacity-foreground = ${colors.primary}
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 80
+units = false
 
 format = <ramp> <label>
 format-warn = <ramp> <label-warn>
 
 label = %temperature-c%
-label-warn = %temperature-c%
+label-warn = %temperature-c%!
 label-warn-foreground = ${colors.secondary}
 
 ramp-0 = 
