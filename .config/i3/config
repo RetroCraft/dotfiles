@@ -18,10 +18,11 @@ floating_modifier $mod
 bindsym $mod+Return exec termite
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start rofi
 bindsym $mod+d exec rofi -show drun
+bindsym $mod+Tab exec rofi -show window
 
 # change focus
 bindsym $mod+j focus left
@@ -70,7 +71,7 @@ set $ws4 "4: 拾"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8: 奈"
 set $ws9 "9: "
 set $ws10 "10: ﭮ"
 
@@ -99,6 +100,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # workspace-specific apps
+assign [class="mpv"] $ws8
 assign [class="Firefox"] $ws9
 assign [class="discord"] $ws10
 
@@ -125,6 +127,10 @@ mode "resize" {
         bindsym k resize grow height 10 px
         bindsym l resize shrink height 10 px
         bindsym semicolon resize grow width 10 px
+        bindsym Left resize shrink width 5 px
+        bindsym Up resize grow height 5 px
+        bindsym Down resize shrink height 5 px
+        bindsym Right resize grow width 5 px
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
