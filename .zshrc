@@ -10,9 +10,12 @@ export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 [ -f ~/.cache/wal/sequences ] && cat ~/.cache/wal/sequences
 
 export EDITOR='nvim'
+export BROWSER='/usr/bin/firefox'
 [ -f ~/.terminalrc ] && source ~/.terminalrc
 
 export DISPLAY=:0
+export RTV_URLVIEWER=$HOME/bin/urlmenu
+export RTV_BROWSER=$HOME/bin/urlopen
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

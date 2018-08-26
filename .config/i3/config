@@ -2,11 +2,12 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-# lock on start
-exec --no-startup-id i3lock --bar-indicator --bar-position h --bar-direction 1 --redraw-thread -t "" \
-        --bar-step 50 --bar-width 250 --bar-base-width 50 --bar-max-height 100 --bar-periodic-step 50 \
-        --bar-color 00000077 --keyhlcolor 00666666 --ringvercolor cc87875f --wrongcolor ffff0000 \
-        --veriftext="" --wrongtext="" --noinputtext="" -i $HOME/.config/i3/lock.png
+# # lock on start
+# exec --no-startup-id i3lock --bar-indicator --bar-position h --bar-direction 1 --redraw-thread -t "" \
+#         --bar-step 50 --bar-width 250 --bar-base-width 50 --bar-max-height 100 --bar-periodic-step 50 \
+#         --bar-color 00000077 --keyhlcolor 00666666 --ringvercolor cc87875f --wrongcolor ffff0000 \
+#         --veriftext="" --wrongtext="" --noinputtext="" -i $HOME/.config/i3/lock.png
+exec --no-startup-id wal -R
 
 # mod key = start
 set $mod Mod4
@@ -100,9 +101,11 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # workspace-specific apps
-assign [class="mpv"] $ws8
+assign [class="mpv" tiling] $ws8
 assign [class="Firefox"] $ws9
 assign [class="discord"] $ws10
+
+for_window [title="^floating$"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -142,7 +145,7 @@ bindsym $mod+r mode "resize"
 
 # desktop
 exec_always --no-startup-id compton -bCG -i 0.8
-exec_always --no-startup-id source wal-set
+exec_always --no-startup-id wal-set
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

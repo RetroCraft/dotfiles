@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# urlscan but it uses dmenu
+# nothing fancy, used in rtv
+# honestly should be an alias but then it can't be an env var
+
+url=$(urlscan -n | rofi -dmenu -p "urlscan")
+urlopen $url

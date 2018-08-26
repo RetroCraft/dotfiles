@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+# open url from command line
+
+ext="${1##*.}"
+mpvExts="gif gifv mp4 mkv webm"
+mpvUrls="youtube.com\|youtu.be
+  \|v.redd.it
+  "
+fehExts="png jpg jpeg bmp"
+
+if echo $fehExts | grep -w $ext > /dev/null; then
+  setsid nohup feh -g 640x480 -^ floating --scale-down --auto-zoom "$1" &!
+elif echo $mpvExts | grep -w $ext > /dev/null; then
+  setsid nohup mpv --autofit 640x480 --loop=inf --title floating "$1" &!
+elif echo "$@" | grep "$mpvUrls" > /dev/null; then
+  setsid nohup mpv --ytdl-format=bestvideo+bestaudio/best --autofit 640x480 --loop=inf --title floating "$1" &!
+else
+  setsid nohup firefox --new-tab "$1" 2>/dev/null &!
+  sleep 3
+  i3-msg '[class="Firefox"] focus'
+fi

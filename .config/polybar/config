@@ -269,7 +269,7 @@ full-at = 98
 format-charging = <ramp-capacity> <label-charging>
 format-discharging = <ramp-capacity> <label-discharging>
 time-format = %H:%M
-label-discharging = %percentage%% %time%
+label-discharging = %percentage%% %time% %consumption%
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.primary}
