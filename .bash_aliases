@@ -34,6 +34,7 @@ alias du='du -h'
 # Fun things
 alias kys='shutdown -t 0'
 alias stfu='shutup'
+alias bye3='i3-msg exit'
 
 #######################
 # Tools and Long Things
