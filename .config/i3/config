@@ -17,6 +17,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec termite
+bindsym $mod+Shift+Return exec termite -d "$(xcwd)"
 
 # kill focused window
 bindsym $mod+q kill
@@ -151,8 +152,8 @@ exec_always --no-startup-id wal-set
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # gaps
-gaps inner 30
-gaps outer 20
+gaps inner 20
+gaps outer 0
 
 # border / titlebar
 smart_borders on

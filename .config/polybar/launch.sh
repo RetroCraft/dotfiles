@@ -7,4 +7,6 @@ while pgrep -u $UID -x polybar > /dev/null; do sleep 1; done
 export color0_alpha="#DD${color0/'#'}"
 
 polybar top &
+polybar dummy &
 polybar bottom &
+polybar dummy-bottom &
