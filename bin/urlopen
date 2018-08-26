@@ -10,9 +10,9 @@ mpvUrls="youtube.com\|youtu.be
 fehExts="png jpg jpeg bmp"
 
 if echo $fehExts | grep -w $ext > /dev/null; then
-  setsid nohup feh -g 640x480 -^ floating --scale-down --auto-zoom "$1" &!
+  setsid nohup feh -g 800x600 -^ floating --scale-down --auto-zoom "$1" &!
 elif echo $mpvExts | grep -w $ext > /dev/null; then
-  setsid nohup mpv --autofit 640x480 --loop=inf --title floating "$1" &!
+  setsid nohup mpv --autofit 800x600 --loop=inf --title floating "$1" &!
 elif echo "$@" | grep "$mpvUrls" > /dev/null; then
   setsid nohup mpv --ytdl-format=bestvideo+bestaudio/best --autofit 640x480 --loop=inf --title floating "$1" &!
 else

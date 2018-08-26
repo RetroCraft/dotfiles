@@ -1,8 +1,15 @@
-#!/bin/bash
+#!/bin/zsh
 
 # urlscan but it uses dmenu
-# nothing fancy, used in rtv
-# honestly should be an alias but then it can't be an env var
+# also skips prompting if only one option
 
-url=$(urlscan -n | rofi -dmenu -p "urlscan")
-urlopen $url
+urls=$(urlscan -n)
+lines=$(echo $urls | wc -l)
+if [ "$lines" -eq 1 ]; then
+  urlopen $urls
+else
+  url=$(echo $urls | rofi -dmenu -p "urlscan")
+  if [ ! -z "$url" ]; then
+    urlopen $url
+  fi
+fi
