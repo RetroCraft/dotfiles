@@ -69,3 +69,17 @@ github () {
   git clone https://github.com/$1/$2
   cd $2
 }
+
+## CRONTAB
+if test -z $CRONTABCMD; then
+  # allows to source zshrc twice
+  export CRONTABCMD=$(which crontab)
+  crontab() {
+    if [[ $@ == "-e" ]]; then
+      nvim ~/.crontab && $CRONTABCMD ~/.crontab
+    else
+      $CRONTABCMD $@
+    fi
+  }
+  $CRONTABCMD ~/.crontab
+fi

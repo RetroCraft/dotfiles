@@ -1,6 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/zsh
 
-source "$HOME/.cache/wal/colors.sh"
+. "$HOME/.cache/wal/colors.sh"
 
 reload_dunst() {
   sed -i"" --follow-symlinks \
@@ -11,7 +11,7 @@ reload_dunst() {
 }
 
 reload_discord() {
-  wal-discord
+  $HOME/bin/wal-discord
 }
 
 main() {

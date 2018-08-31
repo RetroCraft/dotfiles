@@ -1,4 +1,6 @@
 # crontab
+SHELL=/bin/zsh
+DISPLAY=:0
 # +--------- minute (0-59)                                              | output dumper: >/dev/null 2>&1
 # |     +------- hour (0-23)                                            | multiple values use commas: 3,12,47
 # |     |       +----- day of month (1-31)                              | do every x intervals: */x
@@ -6,7 +8,6 @@
 # |     |       |       |       +- day of week (0-6) (sunday = 0)       |          @weekly @monthly
 # |     |       |       |       |                                       |          @yearly
 # *     *       *       *       *       command                         |
-
-*/15    *       *       *       *       /home/jam/bin/wal-set
+*/15    *       *       *       *       /bin/zsh /home/jam/bin/wal-set
 
 # vim:set ft=crontab

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+FILE="/sys/class/backlight/intel_backlight/brightness"
+
+if [ "$1" = "up" ]; then
+  echo "937" > $FILE
+fi
+
+if [ "$1" = "down" ]; then
+  echo "92" > $FILE
+fi
