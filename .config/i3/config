@@ -7,7 +7,6 @@
 #         --bar-step 50 --bar-width 250 --bar-base-width 50 --bar-max-height 100 --bar-periodic-step 50 \
 #         --bar-color 00000077 --keyhlcolor 00666666 --ringvercolor cc87875f --wrongcolor ffff0000 \
 #         --veriftext="" --wrongtext="" --noinputtext="" -i $HOME/.config/i3/lock.png
-exec --no-startup-id wal -R
 
 # mod key = start
 set $mod Mod4
@@ -107,6 +106,7 @@ assign [class="Firefox"] $ws9
 assign [class="discord"] $ws10
 
 for_window [title="^floating$"] floating enable
+for_window [title="^tridactyl_editor$"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -118,6 +118,10 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # lock screen
 bindsym $mod+Escape exec glitchlock
 exec xautolock -time 10 -locker glitchlock &
+
+# screenshot
+bindsym Print --release exec "scrot -s -z /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
+bindsym Shift+Print exec "scrot -z /tmp/screenshot-$(date +%F_%T).png -e 'xclip -selection c -t image/png < $f'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -146,7 +150,7 @@ bindsym $mod+r mode "resize"
 
 # desktop
 exec_always --no-startup-id compton -bCG -i 0.8
-exec_always --no-startup-id wal-set
+exec_always --no-startup-id $HOME/bin/wal-set
 
 # polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
