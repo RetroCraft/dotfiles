@@ -106,7 +106,7 @@ assign [class="Firefox"] $ws9
 assign [class="discord"] $ws10
 
 for_window [title="^floating$"] floating enable
-for_window [title="^tridactyl_editor$"] floating enable
+for_window [class="tridactyl_editor"] floating enable
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
