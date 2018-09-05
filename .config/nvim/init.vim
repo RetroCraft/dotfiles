@@ -399,7 +399,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'sotte/presenting.vim', { 'for': 'markdown' }
 
   Plug 'embear/vim-localvimrc'
-  let g:localvimrc_whitelist='/mnt/d/Documents/GitHub/\(dmoj\|project-euler\)'
+  let g:localvimrc_whitelist='/mnt/\(shared\|d\)/Documents/GitHub/\(noots\|dmoj\|project-euler\)'
   let g:localvimrc_sandbox=0
 
   " Fancy startup screen for vim {{{
@@ -683,12 +683,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
     let g:pandoc#command#prefer_pdf = 1
-    let g:pandoc#command#autoexec_on_writes = 1
     let g:pandoc#command#custom_open = 'SumatraPDF'
     function! SumatraPDF(file)
         return 'sumatrapdf ' . shellescape(expand(a:file,':p'))
     endfunction
-    let g:pandoc#command#autoexec_command = 'Pandoc #noot'
     let g:pandoc#syntax#conceal#blacklist = [
       \'codeblock_start',
       \'codeblock_delim',
@@ -697,6 +695,9 @@ call plug#begin('~/.config/nvim/plugged')
       \'python',
       \'javascript',
       \'java',
+      \]
+    let g:pandoc#modules#disabled = [
+      \'chdir',
       \]
   " }}}
 
