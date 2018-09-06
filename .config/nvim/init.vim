@@ -94,7 +94,7 @@ call plug#begin('~/.config/nvim/plugged')
   " toggle invisible characters
   set list
   set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-  set showbreak=↪
+  set showbreak=⤸
 
   " switch cursor to line when in insert mode, and block when not
   set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
