@@ -14,6 +14,9 @@ set $mod Mod4
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# keyboard layout
+exec_always "setxkbmap -layout us,el -option grp:win_space_toggle"
+
 # start a terminal
 bindsym $mod+Return exec termite
 bindsym $mod+Shift+Return exec termite -d "$(xcwd)"
