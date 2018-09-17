@@ -6,6 +6,8 @@
 # author: xero <x@xero.nu> http://xero.nu
 # requires: i3lock-color, imagemagick, scrot
 
+pgrep i3lock > /dev/null && exit 1
+
 scrot /tmp/lock.png -z
 convert -blur 0x6 /tmp/lock.png /tmp/lock.jpg
 file=/tmp/lock.jpg

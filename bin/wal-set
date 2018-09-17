@@ -1,4 +1,4 @@
 #!/bin/zsh
 
-/usr/bin/wal -i $HOME/Pictures/Wallpapers/earthporn -o $HOME/bin/wal-post
+/usr/bin/wal -g -i $HOME/Pictures/Wallpapers/earthporn -o $HOME/bin/wal-post
 
