@@ -22,6 +22,10 @@ call plug#begin('~/.config/nvim/plugged')
 
   set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
   set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+  if (has('persistent_undo'))
+    set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+    set undofile
+  endif
 
   if (has('nvim'))
     " show results of substition as they're happening
@@ -399,7 +403,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'sotte/presenting.vim', { 'for': 'markdown' }
 
   Plug 'embear/vim-localvimrc'
-  let g:localvimrc_whitelist='/mnt/\(shared\|d\)/Documents/GitHub/\(noots\|dmoj\|project-euler\)'
+  let g:localvimrc_whitelist='/mnt/\(shared\|d\)/Documents/Git\(Hub\|Lab\)/\(noots\|dmoj\|project-euler\)'
   let g:localvimrc_sandbox=0
 
   " Fancy startup screen for vim {{{
@@ -474,6 +478,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     autocmd! User GoyoEnter nested call <SID>goyo_enter()
     autocmd! User GoyoLeave nested call <SID>goyo_leave()
+    Plug 'mbbill/undotree'
+    Plug 'junegunn/vim-peekaboo'
   " }}}
 
   " context-aware pasting
