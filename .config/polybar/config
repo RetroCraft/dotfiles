@@ -62,7 +62,7 @@ font-0 = FuraMono Nerd Font:pixelsize=12;1
 
 modules-left = i3
 modules-center = date
-modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu temperature wlan battery powermenu
+modules-right = filesystem xbacklight pulseaudio xkeyboard memory cpu temperature battery powermenu
 
 override-redirect = true
 
