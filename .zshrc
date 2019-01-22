@@ -4,8 +4,10 @@ unsetopt BG_NICE
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
 export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
+export PATH="$PATH:/usr/bin/vendor_perl"
 
 [ -f ~/.cache/wal/sequences ] && cat ~/.cache/wal/sequences
 
@@ -57,6 +59,7 @@ antigen bundle npm
 antigen bundle yarn
 antigen bundle zsh-users/zsh-completions
 autoload -U compinit && compinit
+autoload zmv
 
 # Command autosuggestions
 antigen bundle zsh-users/zsh-autosuggestions
