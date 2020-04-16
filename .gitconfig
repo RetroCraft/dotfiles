@@ -5,7 +5,7 @@
 [user]
 	email = retrocraft314@gmail.com
 	name = James Ah Yong
-	signingkey = 5AE9E583
+	signingkey = E4B89DA4
 [core]
 	autocrlf = false
 [github]
