@@ -58,6 +58,14 @@ mru () {
   history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n10
 }
 
+## fzf-powered command history searching
+fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) \
+    | fzf +s --tac \
+    | sed -r 's/ *[0-9]*\*? *//' \
+    | sed -r 's/\\/\\\\/g' )
+}
+
 ## Make dir and jump into it
 mcd () {
   mkdir -p $1

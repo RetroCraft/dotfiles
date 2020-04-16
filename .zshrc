@@ -72,6 +72,12 @@ export KEYTIMEOUT=10
 bindkey -M viins 'kj' vi-cmd-mode
 bindkey -r '^j'
 bindkey '^j' autosuggest-accept # similar to deoplete
+
+function fzf-history {
+	BUFFER=$( ([ -n "$ZSH_NAME"  ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g' )
+}
+zle -N fzf-history
+bindkey '^k' fzf-history # fzf-powered history search
 # Navigation
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
