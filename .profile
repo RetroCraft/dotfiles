@@ -23,3 +23,10 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export DISPLAY=:0
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+# WSL 2 Genie bottle
+if [ -f /usr/bin/genie ]; then
+  if [[ ! -v INSIDE_GENIE ]]; then
+    /usr/bin/genie -s
+  fi
+fi
