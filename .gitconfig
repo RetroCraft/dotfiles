@@ -3,10 +3,14 @@
 [credential]
 	helper = store
 [user]
-	email = retrocraft314@gmail.com
+	email = james@retrocraft.ca
 	name = James Ah Yong
-	signingkey = E4B89DA4
+	signingkey = F7685AAEA22F971A
 [core]
 	autocrlf = false
 [github]
 	user = RetroCraft
+[gpg]
+	program = gpg2
+[commit]
+	gpgsign = true
