@@ -37,7 +37,7 @@ SPACESHIP_PROMPT_ORDER=(
 	elixir xcode swift golang
 	php rust haskell julia
 	docker aws venv conda pyenv
-	dotnet ember kubecontext
+	dotnet ember kubectl
 	exec_time line_sep
 	battery jobs exit_code char
 )
