@@ -180,20 +180,20 @@ context = ctrl+shift+period
 
 [urgency_low]
 frame_color = "#3E4452"
-foreground = "#b1b6bb"
-background = "#1a1d11"
+foreground = "#ebe0ca"
+background = "#131308"
 timeout = 4
 
 [urgency_normal]
 frame_color = "#56B6C2"
-foreground = "#b1b6bb"
-background = "#1a1d11"
+foreground = "#ebe0ca"
+background = "#131308"
 timeout = 6
 
 [urgency_critical]
 frame_color = "#E06C75"
-foreground = "#b1b6bb"
-background = "#1a1d11"
+foreground = "#ebe0ca"
+background = "#131308"
 timeout = 8
 
 
