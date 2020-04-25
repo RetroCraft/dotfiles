@@ -91,3 +91,18 @@ if test -z $CRONTABCMD; then
   }
   $CRONTABCMD ~/.crontab
 fi
+
+## Journal date
+jdate () {
+  ARG1=${1:-noura}
+  # epochs indexed to 0 = 31 December 2019
+  declare -A epochs=( [noura]="1000" )
+  EPOCH="${epochs[$ARG1]}"
+  printf "$((365*($(date +%Y)-2020) + $(date +%j) + $EPOCH)):$(date +%k%M)\n"
+}
+
+## Unlock GPG key
+unlockgpg () {
+  printf "lol" \
+    | gpg2 --status-fd=2 -bsau 'James Ah Yong <james@retrocraft.ca>' > /dev/null
+}

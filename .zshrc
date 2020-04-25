@@ -13,7 +13,6 @@ export PATH="$PATH:/usr/bin/vendor_perl"
 
 export EDITOR='nvim'
 export BROWSER='/usr/bin/firefox'
-[ -f ~/.terminalrc ] && source ~/.terminalrc
 
 export DISPLAY=:0
 export RTV_URLVIEWER=$HOME/bin/urlmenu
@@ -74,7 +73,7 @@ bindkey -r '^j'
 bindkey '^j' autosuggest-accept # similar to deoplete
 
 function fzf-history {
-	BUFFER=$( ([ -n "$ZSH_NAME"  ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g' )
+	BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed -r 's/ *[0-9]*\*? *//' | sed -r 's/\\/\\\\/g' )
 }
 zle -N fzf-history
 bindkey '^k' fzf-history # fzf-powered history search
@@ -91,3 +90,5 @@ bindkey -M vicmd 'j' down-line-or-beginning-search
 bindkey '^[[3~' delete-char
 bindkey -a '^[[3~' delete-char
 
+# MOTD etc
+[ -f ~/.terminalrc ] && source ~/.terminalrc

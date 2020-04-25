@@ -5,9 +5,25 @@ if [ -f $HOME/.bash_aliases ]; then
   source $HOME/.bash_aliases
 fi
 
+# thefuck
+# DISABLE_CORRECTION=true
+# setopt CSH_NULL_GLOB
+# setopt nocorrect
+# setopt nocorrectall
+# eval $( thefuck --alias --enable-experimental-instant-mode )
+
 # MOTD
 if ! [ $(id -u) = 0 ]; then
-  fortune -e fortunes | cowsay | lolcat
+  MOTD="$(fortune -e fortunes | cowsay)\n"
+  MOTD="$MOTD We are $(id -un)@$(hostname)."
+  MOTD="$MOTD It is $(date +'%A, %d %B %Y') -"
+  MOTD="$MOTD Day $(jdate).\n"
+  if [ -f /usr/bin/genie ]; then
+    if [[ -v INSIDE_GENIE ]]; then
+      MOTD="$MOTD WSL Genie ON.\n"
+    fi
+  fi
+  printf "$MOTD" | lolcat
 fi
 
-# vim: ft=sh
+# vim: ft=zsh
