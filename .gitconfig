@@ -5,7 +5,6 @@
 [user]
 	email = james@retrocraft.ca
 	name = James Ah Yong
-	signingkey = F7685AAEA22F971A
 [core]
 	autocrlf = false
 [github]

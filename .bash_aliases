@@ -94,6 +94,7 @@ fi
 
 ## Unlock GPG key
 unlockgpg () {
+  export GPG_TTY=$(tty)
   printf "lol" \
     | gpg2 --status-fd=2 -bsau 'James Ah Yong <james@retrocraft.ca>' > /dev/null
 }
