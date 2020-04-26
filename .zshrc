@@ -28,6 +28,15 @@ antigen use oh-my-zsh
 # Misc
 antigen bundle history
 
+# journal time
+spaceship_jtime() {
+  spaceship::section \
+    "$SPACESHIP_TIME_COLOR" \
+    "$SPACESHIP_TIME_PREFIX" \
+    "$(jdate -tse journal)" \
+    "$SPACESHIP_TIME_SUFFIX"
+}
+
 # Set Spaceship ZSH as a prompt
 SPACESHIP_PROMPT_ORDER=(
 	user dir host
@@ -42,11 +51,10 @@ SPACESHIP_PROMPT_ORDER=(
 )
 SPACESHIP_RPROMPT_ORDER=(
 	vi_mode
-	time
+	jtime
 )
 SPACESHIP_VI_MODE_COLOR=black
-SPACESHIP_TIME_SHOW=true
-SPACESHIP_TIME_PREFIX=''
+SPACESHIP_TIME_COLOR=yellow
 antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 
 # Syntax highlighting
