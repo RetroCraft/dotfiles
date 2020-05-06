@@ -8,6 +8,7 @@ export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
 export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 export PATH="$PATH:/usr/bin/vendor_perl"
+source /usr/share/nvm/init-nvm.sh
 
 [ -f ~/.cache/wal/sequences ] && cat ~/.cache/wal/sequences
 
@@ -53,6 +54,9 @@ SPACESHIP_RPROMPT_ORDER=(
 	vi_mode
 	jtime
 )
+SPACESHIP_CHAR_SUFFIX=' '
+SPACESHIP_CHAR_SYMBOL='$'
+SPACESHIP_CHAR_SYMBOL_ROOT='#'
 SPACESHIP_VI_MODE_COLOR=black
 SPACESHIP_TIME_COLOR=yellow
 antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship

@@ -22,6 +22,6 @@ if [[ ! -v EPOCH ]] EPOCH="${epochs[journal]}" # default epoch
 Y="$(( $(date +%Y)-2020 ))" # year offset
 YEAR="$(( (365*$Y) + ($Y/4) ))" # leap year calculation
 printf "$(( $YEAR + $(date +%j) + $EPOCH ))" # date num calculation
-[[ -v TIME ]] && printf ":$(date +%k%M)" # add time
+[[ -v TIME ]] && printf ":$(date +%H%M)" # add time
 [[ -v SEC ]] && printf "$(date +%S)" # seconds
 printf '\n'

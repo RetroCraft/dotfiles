@@ -18,6 +18,7 @@ if ! [ $(id -u) = 0 ]; then
   MOTD="$MOTD We are $(id -un)@$(hostname)."
   MOTD="$MOTD It is $(date +'%A, %d %B %Y') -"
   MOTD="$MOTD Day $(jdate -e journal).\n"
+  MOTD="$MOTD That's day $(jdate -e corona) of quarantine.\n"
   if [ -f /usr/bin/genie ]; then
     if [[ -v INSIDE_GENIE ]]; then
       MOTD="$MOTD WSL Genie ON.\n"
