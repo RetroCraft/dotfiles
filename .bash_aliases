@@ -52,6 +52,9 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 ## Process grep
 alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
 
+## WSL ffmpeg
+alias ffmpeg-win='/mnt/c/Users/retro/Programs/ffmpeg/bin/ffmpeg.exe -hwaccel auto'
+
 ## MRU Commands
 mru () {
   echo "Most used commands:"
