@@ -15,7 +15,6 @@ source /usr/share/nvm/init-nvm.sh
 export EDITOR='nvim'
 export BROWSER='/usr/bin/firefox'
 
-export DISPLAY=:0
 export RTV_URLVIEWER=$HOME/bin/urlmenu
 export RTV_BROWSER=$HOME/bin/urlopen
 
@@ -43,10 +42,10 @@ SPACESHIP_PROMPT_ORDER=(
 	user dir host
 	git hg
 	package node ruby
-	elixir xcode swift golang
-	php rust haskell julia
+	golang
+	php rust haskell
 	docker aws venv conda pyenv
-	dotnet ember kubectl
+	dotnet kubectl
 	exec_time line_sep
 	battery jobs exit_code char
 )

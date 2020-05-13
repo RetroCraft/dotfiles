@@ -20,13 +20,16 @@ fi
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export DISPLAY=:0
-
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # WSL 2 Genie bottle
 if [ -f /usr/bin/genie ]; then
   if [[ ! -v INSIDE_GENIE ]]; then
     /usr/bin/genie -s
+  else
+    export DISPLAY="$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0"
+    export LIBGL_ALWAYS_INDIRECT=1
   fi
+else
+  export DISPLAY=:0
 fi
