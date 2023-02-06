@@ -14,10 +14,14 @@ setopt HIST_IGNORE_SPACE
 [ -f ~/.profile ] && source ~/.profile
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.gem/ruby/3.0.0/bin:/usr/lib/ruby/gems/3.0.0/bin"
 export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
 export PATH="$PATH:/usr/bin/vendor_perl"
 source /usr/share/nvm/init-nvm.sh
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
 [ -f ~/.cache/wal/sequences ] && cat ~/.cache/wal/sequences
 
