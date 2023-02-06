@@ -35,6 +35,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   set backspace=indent,eol,start " make backspace behave in a sane manner
   set clipboard=unnamed
+  set number relativenumber " show line numbers
 
   if has('mouse')
     set mouse=a
@@ -521,7 +522,7 @@ call plug#begin('~/.config/nvim/plugged')
   " }}}
 
   " FZF {{{
-    Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+    Plug 'junegunn/fzf', { 'dir': '~/.fzf' }
     Plug 'junegunn/fzf.vim'
     let g:fzf_layout = { 'down': '~25%' }
 
@@ -655,9 +656,6 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'tpope/vim-rails', { 'for': 'ruby' }
   " }}}
 
-  " Ruby / Ruby on Rails
-  Plug 'tpope/vim-rails', { 'for': 'ruby' }
-
   " JavaScript {{{
     Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'html'] }
     Plug 'moll/vim-node', { 'for': 'javascript' }
@@ -689,9 +687,18 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
     let g:pandoc#command#prefer_pdf = 1
-    let g:pandoc#command#custom_open = 'SumatraPDF'
+    let g:pandoc#command#custom_open = 'zathura'
     function! SumatraPDF(file)
-        return 'sumatrapdf ' . shellescape(expand(a:file,':p'))
+      let l:sumatra = 'sumatrapdf '
+      let l:file = expand(a:file,':p')
+      if $INSIDE_GENIE
+        let l:sumatra = '/mnt/c/Users/retro/Programs/bin/SumatraPDF.exe '
+        let l:file = substitute(system('realpath a:file'), '\n\+$', '', '')
+        if l:file =~ '^/mnt/'
+          let l:file = substitute(l:file, '^/mnt/\(\w\)/', '\1:/', '', '')
+        endif
+      endif
+      return l:sumatra . shellescape(l:file)
     endfunction
     let g:pandoc#syntax#conceal#blacklist = [
       \'codeblock_start',
@@ -716,7 +723,7 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'lervag/vimtex'
     let g:tex_flavor='latex'
     let g:vimtex_compiler_progname='nvr'
-    let g:vimtex_view_general_viewer='sumatrapdf'
+    let g:vimtex_view_general_viewer='zathura'
   " }}}
 
   " jelly {{{
@@ -728,6 +735,15 @@ call plug#begin('~/.config/nvim/plugged')
   " mathematica {{{
     Plug 'rsmenon/vim-mathematica'
     let g:mma_candy=1
+  " }}}
+
+  " racket {{{
+    Plug 'wlangstroth/vim-racket'
+    Plug 'luochen1990/rainbow'
+    let g:rainbow_active = 0
+    augroup filetype_racket
+      autocmd!
+    augroup END
   " }}}
 
   Plug 'fatih/vim-go', { 'for': 'go' }
@@ -744,17 +760,17 @@ call plug#end()
   if filereadable(expand("~/.cache/wal/colors"))
     colorscheme wal
   else
-    " enable 24 bit color support if supported
-    if (has("termguicolors"))
-      set t_8f=[38;2;%lu;%lu;%lum
-      set t_8f=[48;2;%lu;%lu;%lum
-      set termguicolors
-    endif
-
     let g:onedark_termcolors=256
     let g:onedark_terminal_italics=1
     colorscheme onedark
   endif
+  " enable 24 bit color support if supported
+  if (has("termguicolors"))
+    set t_8f=[38;2;%lu;%lu;%lum
+    set t_8f=[48;2;%lu;%lu;%lum
+    set termguicolors
+  endif
+
   syntax on
   filetype plugin indent on
   " make the highlighting of tabs and other non-text less annoying
@@ -768,11 +784,9 @@ call plug#end()
   highlight Type cterm=italic
   highlight Normal ctermbg=none
 
+  call deoplete#custom#var('omni', 'input_patterns', {
+            \ 'tex': g:vimtex#re#deoplete
+            \})
 " }}}
-
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " vim:set foldmethod=marker foldlevel=0

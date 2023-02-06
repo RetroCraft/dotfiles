@@ -1,5 +1,5 @@
 [options]
-font = FuraMono Nerd Font 12
+font = JetBrainsMono Nerd Font 12
 fullscreen = false
 scrollback_lines = 10000
 hyperlinks = true

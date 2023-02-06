@@ -24,12 +24,17 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # WSL 2 Genie bottle
 if [ -f /usr/bin/genie ]; then
-  if [[ ! -v INSIDE_GENIE ]]; then
+  if [[ ! -v INSIDE_GENIE && -v START_GENIE ]]; then
     /usr/bin/genie -s
-  else
-    export DISPLAY="$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0"
-    export LIBGL_ALWAYS_INDIRECT=1
   fi
+  export DISPLAY="$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0"
+  export PATH="$PATH:/mnt/c/Users/retro/Programs/bin"
+  export PATH="$PATH:/mnt/c/Users/retro/AppData/Local/Programs/Microsoft VS Code/bin"
+  export PATH="$PATH:/mnt/c/Users/retro/Documents/CodingStuff/scripts/bin"
+  export LIBGL_ALWAYS_INDIRECT=1
 else
   export DISPLAY=:0
 fi
+export GTK_THEME=Arc:dark
+
+export PATH="$HOME/.elan/bin:$PATH"

@@ -1,12 +1,21 @@
+# MOTD etc
+[ -f ~/.terminalrc ] && source ~/.terminalrc
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Weird bug (Microsoft/WSL#1887)
 unsetopt BG_NICE
+setopt HIST_IGNORE_SPACE
 [ -f ~/.profile ] && source ~/.profile
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.gem/ruby/2.5.0/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.gem/ruby/2.7.0/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
-export PATH="$PATH:/mnt/d/Documents/CodingStuff/scripts/bin"
 export PATH="$PATH:/usr/bin/vendor_perl"
 source /usr/share/nvm/init-nvm.sh
 
@@ -38,40 +47,40 @@ spaceship_jtime() {
 }
 
 # Set Spaceship ZSH as a prompt
-SPACESHIP_PROMPT_ORDER=(
-	user dir host
-	git hg
-	package node ruby
-	golang
-	php rust haskell
-	docker aws venv conda pyenv
-	dotnet kubectl
-	exec_time line_sep
-	battery jobs exit_code char
-)
-SPACESHIP_RPROMPT_ORDER=(
-	vi_mode
-	jtime
-)
-SPACESHIP_CHAR_SUFFIX=' '
-SPACESHIP_CHAR_SYMBOL='$'
-SPACESHIP_CHAR_SYMBOL_ROOT='#'
-SPACESHIP_VI_MODE_COLOR=black
-SPACESHIP_TIME_COLOR=yellow
-antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+# SPACESHIP_PROMPT_ORDER=(
+# 	user dir host
+# 	# git hg
+# 	# package node ruby
+# 	# golang
+# 	# rust haskell
+# 	# aws venv conda pyenv
+# 	# dotnet kubectl
+# 	exec_time line_sep
+# 	jobs exit_code char
+# )
+# SPACESHIP_RPROMPT_ORDER=(
+# 	vi_mode
+# 	jtime
+# )
+# SPACESHIP_CHAR_SUFFIX=' '
+# SPACESHIP_CHAR_SYMBOL='$'
+# SPACESHIP_CHAR_SYMBOL_ROOT='#'
+# SPACESHIP_VI_MODE_COLOR=black
+# SPACESHIP_TIME_COLOR=yellow
+# antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+antigen theme romkatv/powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# Syntax highlighting
+# # Syntax highlighting
 antigen bundle zsh-users/zsh-syntax-highlighting
 
-# Command completion
-antigen bundle git
-antigen bundle npm
-antigen bundle yarn
+# # Command completion
 antigen bundle zsh-users/zsh-completions
 autoload -U compinit && compinit
 autoload zmv
 
-# Command autosuggestions
+# # Command autosuggestions
 antigen bundle zsh-users/zsh-autosuggestions
 
 antigen bundle vi-mode
@@ -101,5 +110,17 @@ bindkey -M vicmd 'j' down-line-or-beginning-search
 bindkey '^[[3~' delete-char
 bindkey -a '^[[3~' delete-char
 
-# MOTD etc
-[ -f ~/.terminalrc ] && source ~/.terminalrc
+pasteinit() {
+  OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
+  zle -N self-insert url-quote-magic # I wonder if you'd need `.url-quote-magic`?
+}
+
+pastefinish() {
+  zle -N self-insert $OLD_SELF_INSERT
+}
+zstyle :bracketed-paste-magic paste-init pasteinit
+zstyle :bracketed-paste-magic paste-finish pastefinish
+
+# opam configuration
+test -r /home/jam/.opam/opam-init/init.zsh && . /home/jam/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
