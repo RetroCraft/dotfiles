@@ -27,14 +27,12 @@ if [ -f /usr/bin/genie ]; then
   if [[ ! -v INSIDE_GENIE && -v START_GENIE ]]; then
     /usr/bin/genie -s
   fi
-  export DISPLAY="$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0"
   export PATH="$PATH:/mnt/c/Users/retro/Programs/bin"
   export PATH="$PATH:/mnt/c/Users/retro/AppData/Local/Programs/Microsoft VS Code/bin"
   export PATH="$PATH:/mnt/c/Users/retro/Documents/CodingStuff/scripts/bin"
   export LIBGL_ALWAYS_INDIRECT=1
-else
-  export DISPLAY=:0
 fi
+export DISPLAY=:0
 export GTK_THEME=Arc:dark
 
 export PATH="$HOME/.elan/bin:$PATH"

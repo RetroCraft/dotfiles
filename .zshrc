@@ -17,7 +17,6 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH="$PATH:$HOME/.gem/ruby/3.0.0/bin:/usr/lib/ruby/gems/3.0.0/bin"
 export PATH="$PATH:/opt/gradle/gradle-4.9/bin"
 export PATH="$PATH:/usr/bin/vendor_perl"
-source /usr/share/nvm/init-nvm.sh
 
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -41,37 +40,6 @@ antigen use oh-my-zsh
 # Misc
 antigen bundle history
 
-# journal time
-spaceship_jtime() {
-  spaceship::section \
-    "$SPACESHIP_TIME_COLOR" \
-    "$SPACESHIP_TIME_PREFIX" \
-    "$(jdate -tse journal)" \
-    "$SPACESHIP_TIME_SUFFIX"
-}
-
-# Set Spaceship ZSH as a prompt
-# SPACESHIP_PROMPT_ORDER=(
-# 	user dir host
-# 	# git hg
-# 	# package node ruby
-# 	# golang
-# 	# rust haskell
-# 	# aws venv conda pyenv
-# 	# dotnet kubectl
-# 	exec_time line_sep
-# 	jobs exit_code char
-# )
-# SPACESHIP_RPROMPT_ORDER=(
-# 	vi_mode
-# 	jtime
-# )
-# SPACESHIP_CHAR_SUFFIX=' '
-# SPACESHIP_CHAR_SYMBOL='$'
-# SPACESHIP_CHAR_SYMBOL_ROOT='#'
-# SPACESHIP_VI_MODE_COLOR=black
-# SPACESHIP_TIME_COLOR=yellow
-# antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
 antigen theme romkatv/powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

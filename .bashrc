@@ -2,6 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# if [ -t 1 ]; then
-# 	exec zsh
-# fi
+if [ -t 1 ]; then
+	exec zsh
+fi
