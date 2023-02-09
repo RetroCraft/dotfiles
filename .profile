@@ -12,6 +12,8 @@ export PATH="$PATH:$HOME/.gem/ruby/3.0.0/bin:/usr/lib/ruby/gems/3.0.0/bin"
 
 export PATH="$PATH:/usr/bin/vendor_perl"
 
+export PATH="$PATH:$HOME/.emacs.d/bin"
+
 if [ -n "$WSL_DISTRO_NAME" ]; then
   export PATH="$PATH:/mnt/c/Users/retro/Programs/bin"
   export PATH="$PATH:/mnt/c/Users/retro/AppData/Local/Programs/Microsoft VS Code/bin"

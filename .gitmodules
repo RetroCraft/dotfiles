@@ -7,3 +7,6 @@
 [submodule "builds/wal-discord"]
 	path = builds/wal-discord
 	url = https://github.com/guglicap/wal-discord
+[submodule ".emacs.d"]
+	path = .emacs.d
+	url = https://github.com/doomemacs/doomemacs.git

@@ -167,6 +167,10 @@ Set Emacs as the default editor.
 #+begin_src sh
 export EDITOR='emacs'
 #+end_src
+Add Doom scripts to the path.
+#+begin_src sh :tangle ~/.profile
+export PATH="$PATH:$HOME/.emacs.d/bin"
+#+end_src
 Ensure that a server is always started/running.
 #+begin_src sh
 alias emacs='emacsclient --no-wait -a "" -c'
