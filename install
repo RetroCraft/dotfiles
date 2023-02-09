@@ -1,8 +1,10 @@
 #!/bin/bash
 
-if ! command -v git > /dev/null; then
-  echo "installing git"
-  sudo apt install -y git
+if command -v apt > /dev/null; then
+  echo "installing requirements"
+  sudo apt install -y git cowsay fortune-mod lolcat
+  sudo snap install --classic emacs
+  sudo snap install --classic neovim
 fi
 
 function dotfiles {
@@ -24,6 +26,6 @@ dotfiles config status.showUntrackedFiles no
 dotfiles submodule init
 dotfiles submodule update
 echo "dotfiles submodules installed"
-~/.fzf/install
+~/.fzf/install --completion --key-bindings --no-update-rc
 
 echo "dotfiles installed"

@@ -204,6 +204,10 @@
     '(org-level-7 :inherit outline-7 :weight semi-bold)
     '(org-level-8 :inherit outline-8 :weight semi-bold)))
 
+(after! org (setq org-hide-emphasis-markers t))
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode))
+
 (after! org
   (setq org-use-speed-commands
         (lambda ()

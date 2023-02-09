@@ -44,6 +44,11 @@ Add Perl modules to the path.
 #+begin_src sh :tangle ~/.profile
 export PATH="$PATH:/usr/bin/vendor_perl"
 #+end_src
+** Misc.
+Set the GTK theme.
+#+begin_src sh :tangle ~/.profile
+export GTK_THEME='Arc:dark'
+#+end_src
 * Software
 ** MOTD
 Set a message of the day to run on startup

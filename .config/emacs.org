@@ -540,6 +540,16 @@ Set different font sizes for headers.
     '(org-level-7 :inherit outline-7 :weight semi-bold)
     '(org-level-8 :inherit outline-8 :weight semi-bold)))
 #+end_src
+*** Markup
+Hide Org markup indicators (e.g. /italic/ and *bold*) but make them visible when editing.
+#+begin_src emacs-lisp :tangle ~/.doom.d/packages.el
+(package! org-appear)
+#+end_src
+#+begin_src emacs-lisp
+(after! org (setq org-hide-emphasis-markers t))
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode))
+#+end_src
 ** Keybinds
 Enable Speed Keys (and make them work on asterisks before headers).
 #+begin_src emacs-lisp

@@ -7,6 +7,15 @@
 	name = James Ah Yong
 [core]
 	autocrlf = false
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+[merge]
+	conflictstyle = diff3
+[diff]
+	colorMoved = default
 [github]
 	user = RetroCraft
 [gpg]

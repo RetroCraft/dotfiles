@@ -55,4 +55,6 @@
 
 (package! laas)
 
+(package! org-appear)
+
 (package! org-auto-tangle)
