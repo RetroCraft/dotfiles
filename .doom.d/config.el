@@ -49,8 +49,16 @@
       doom-localleader-key ",")
 
 (map! :leader
-      "|" #'evil-window-split
+      "|" #'evil-window-vsplit
       "-" #'evil-window-split)
+
+(custom-set-faces!
+  '(aw-leading-char-face
+    :foreground "white" :background "red"
+    :weight bold :height 2.5 :box (:line-width 10 :color "red")))
+
+(after! evil-snipe
+  (setq evil-snipe-scope 'visible))
 
 ;; Function that tries to autoexpand YaSnippets
 ;; The double quoting is NOT a typo!
@@ -229,3 +237,6 @@
   :hook (org-mode . org-auto-tangle-mode)
   :config
   (setq org-auto-tangle-default t))
+
+(after! grip-mode
+  (setq grip-preview-use-webkit t))

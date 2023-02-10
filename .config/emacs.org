@@ -61,7 +61,6 @@ Create the headers for each file:
        unicode           ; extended unicode support for various languages
        (vc-gutter +pretty) ; vcs diff in the fringe
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       ;;window-select     ; visually switch windows
        workspaces        ; tab emulation, persistence & separate workspaces
        zen               ; distraction-free coding or writing
 
@@ -118,7 +117,7 @@ Create the headers for each file:
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
-       ;;tree-sitter       ; syntax and parsing, sitting in a tree...
+       tree-sitter       ; syntax and parsing, sitting in a tree...
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -155,22 +154,19 @@ Create the headers for each file:
        ;;idris             ; a language you can depend on
        json              ; At least it ain't XML
        ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
-       ;; (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       latex             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices
-       markdown          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       (org +pretty)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
-       ;; (python +lsp)            ; beautiful is better than ugly
+       (python +lsp)            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
@@ -241,7 +237,7 @@ Create the headers for each file:
 
 #+begin_src emacs-lisp :tangle ~/.doom.d/packages.el
 ;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/~/.doom.d/packages.el
+;;; $DOOMDIR/packages.el
 
 ;; To install a package with Doom you must declare them here and run 'doom sync'
 ;; on the command line, then restart Emacs for the changes to take effect -- or
@@ -363,8 +359,24 @@ Set leader keys to ~SPC~ and ~,~.
 Use LazyVim window shortcuts
 #+begin_src emacs-lisp
 (map! :leader
-      "|" #'evil-window-split
+      "|" #'evil-window-vsplit
       "-" #'evil-window-split)
+#+end_src
+Use ace window select.
+#+begin_src emacs-lisp :tangle ~/.doom.d/init.el
+(doom! :ui window-select)
+#+end_src
+#+begin_src emacs-lisp
+(custom-set-faces!
+  '(aw-leading-char-face
+    :foreground "white" :background "red"
+    :weight bold :height 2.5 :box (:line-width 10 :color "red")))
+#+end_src
+**** Sniping
+Snipe entire files.
+#+begin_src emacs-lisp
+(after! evil-snipe
+  (setq evil-snipe-scope 'visible))
 #+end_src
 ** Snippets
 Setup auto-expanding snippets:
@@ -380,6 +392,9 @@ Setup auto-expanding snippets:
 (add-hook 'post-self-insert-hook #'my/yas-try-expanding-auto-snippets)
 #+end_src
 * LaTeX
+#+begin_src emacs-lisp :tangle ~/.doom.d/init.el
+(doom! :lang latex)
+#+end_src
 ** cdlatex
 #+begin_src emacs-lisp :tangle ~/.doom.d/packages.el
 (package! cdlatex)
@@ -525,6 +540,9 @@ Snippet definitions, only KEY and TEMPLATE are actually mandatory.
     )))
 #+end_src
 * Org-Mode
+#+begin_src emacs-lisp :tangle ~/.doom.d/init.el
+(doom! :lang (org +pretty))
+#+end_src
 ** Appearance
 Set different font sizes for headers.
 #+begin_src emacs-lisp
@@ -582,4 +600,13 @@ Automatically tangle files on save:
   :hook (org-mode . org-auto-tangle-mode)
   :config
   (setq org-auto-tangle-default t))
+#+end_src
+* Markdown
+#+begin_src emacs-lisp :tangle ~/.doom.d/init.el
+(doom! :lang (markdown +grip))
+#+end_src
+Enable in-emacs grip.
+#+begin_src emacs-lisp
+(after! grip-mode
+  (setq grip-preview-use-webkit t))
 #+end_src
