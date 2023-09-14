@@ -62,7 +62,7 @@ zstyle :bracketed-paste-magic paste-finish pastefinish
 
 export EDITOR='emacs'
 
-alias emacs='emacsclient --no-wait -a "" -c'
+alias emacs='emacsclient -a "" -c'
 
 alias :e="$EDITOR"
 alias :q='exit'

@@ -25,3 +25,5 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[safe]
+	directory = /data/school/CS350/cs350-container/os161-container/assignments

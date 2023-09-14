@@ -8,13 +8,16 @@
 
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-export PATH="$PATH:$HOME/.gem/ruby/3.0.0/bin:/usr/lib/ruby/gems/3.0.0/bin"
-
-export PATH="$PATH:/usr/bin/vendor_perl"
-
 export GTK_THEME='Arc:dark'
 
-export PATH="$PATH:$HOME/.emacs.d/bin"
+export PATH="$PATH:$HOME/.config/emacs/bin"
+
+export GEM_HOME="$(ruby -r rubygems -e 'puts Gem.user_dir')"
+if which ruby >/dev/null && which gem >/dev/null; then
+    export PATH="$PATH:$GEM_HOME/bin:$(ruby -r rubygems -e "puts Gem.default_dir")/bin"
+fi
+
+export PATH="$PATH:/usr/bin/vendor_perl"
 
 if [ -n "$WSL_DISTRO_NAME" ]; then
   export PATH="$PATH:/mnt/c/Users/retro/Programs/bin"
